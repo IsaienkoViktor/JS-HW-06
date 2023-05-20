@@ -13,7 +13,7 @@ const images = [
   },
 ];
 
-
+//Варіант з лекції, теж спрацює 
 
 // const makeGallery = ({ url, alt}) => {
 // const galleryItem = document.createElement('li');
@@ -41,6 +41,8 @@ const images = [
 
 
 // gallery.append(...cardsArr)
+
+
 
 const gallery = document.querySelector(".gallery");
 

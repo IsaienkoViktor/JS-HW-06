@@ -13,18 +13,13 @@ const spanText = document.querySelector('#text');
     
 // console.log(spanText);
 
-const inputValueSize = (el) => {
-    spanText.style.fontSize = `${el.currentTarget.value}px`;
+
+
+const inputValueSize = (event) => {
+    spanText.style.fontSize = `${event.currentTarget.value}px`;
 };
 
 
 inputValue.addEventListener('input', inputValueSize);
 
 
-// const textEl = document.querySelector("#text");
-// const inputEl = document.querySelector("#font-size-control");
-// const changeFontSize = (e) => {
-//   textEl.style.fontSize = `${e.currentTarget.value}px`;
-// };
-
-// inputEl.addEventListener("input", changeFontSize);

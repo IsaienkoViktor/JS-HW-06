@@ -19,7 +19,7 @@ const inputValue = (event) => {
         ref.outputText.textContent = 'Anonymous'
     }
 
-    
+    //теж працює 
     // event.currentTarget.value !== "" ? ref.outputText.textContent = event.currentTarget.value : ref.outputText.textContent = "Anonymous";
     } 
     
@@ -30,10 +30,3 @@ ref.inputText.addEventListener('input', inputValue)
 
 
 
-
-// const textInput = document.querySelector(".text-input");
-// const output = document.querySelector(".output");
-
-// textInput.addEventListener("input", (event) => {
-//   output.textContent = event.currentTarget.value;
-// });
