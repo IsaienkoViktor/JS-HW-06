@@ -11,8 +11,16 @@ const ref = {
     outputText: document.querySelector('#name-output')
 }
 
-const inputValue = (event) => {    
-    event.currentTarget.value !== "" ? ref.outputText.textContent = event.currentTarget.value : ref.outputText.textContent = "Anonymous";
+const inputValue = (event) => {  
+    if (event.currentTarget.value !== "") {
+        ref.outputText.textContent = event.currentTarget.value
+    }
+    else {
+        ref.outputText.textContent = 'Anonymous'
+    }
+
+    
+    // event.currentTarget.value !== "" ? ref.outputText.textContent = event.currentTarget.value : ref.outputText.textContent = "Anonymous";
     } 
     
 
