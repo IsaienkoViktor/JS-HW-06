@@ -26,7 +26,7 @@ const onSubmit = (event) => {
     event.preventDefault();
     const {email, password} = event.target.elements;
     if(email.value === "" || password.value === ""){
-    return alert('всі поля повинні бути заповнені')
+    return alert('поле не заповнено якщо воно пусте (с) Клічко')
      };
   
 console.log({

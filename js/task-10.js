@@ -1,65 +1,78 @@
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
+// Завдання 10 (виконувати не обов'язково)
+// Напиши скрипт створення і очищення колекції елементів. 
+// Користувач вводить кількість елементів в input і натискає кнопку Створити,
+//   після чого рендериться колекція.Натисненням на кнопку Очистити, колекція елементів очищається.
+
+//   1. Додати ресет для очищення 
+//   2. Отримати кнопки 
+//   3. Отримати початковий дів 
+//   4. Отримати кнопки 
+  
+
+
+// <div id="controls">
+//   <input type="number" min="1" max="100" step="1" />
+//   <button type="button" data-create>Create</button>
+//   <button type="button" data-destroy>Destroy</button>
+// </div>
+
+// <div id="boxes"></div>
+
+// Створи функцію createBoxes(amount), яка приймає один параметр - число. 
+// Функція створює стільки < div >, скільки вказано в amount і додає їх у div#boxes.
+
+// Розміри найпершого <div> - 30px на 30px.
+// Кожен елемент після першого повинен бути ширшим і вищим від попереднього на 10px.
+// Всі елементи повинні мати випадковий колір фону у форматі HEX. 
+// Використовуй готову функцію getRandomHexColor для отримання кольору.
+
+
+// Створи функцію destroyBoxes(), яка очищає вміст div#boxes, у такий спосіб видаляючи всі створені елементи.
+
+const ref = {
+  createBox: document.querySelector('[data-create]'),
+  destroyBox: document.querySelector('[data-destroy]'),
+  input: document.querySelector('[type="number"]'),
+  boxesIsCreate: document.querySelector('#boxes'),
+  boxControls: document.querySelector('#controls')
 }
 
+ function getRandomHexColor() {
+ return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+ }
 
-
-
-
-
-
-
-
-
-
-
-// refs.form.addEventListener("submit", onSubmit);
-// let DRAW_PIXEL = 1;
-// let DRAW_COLOR = 'black';
-
-// const ourBody = document.body;
-// const inputDrawSize = document.querySelector('[name="drawPx"]')
-// const changeColorRef = document.querySelector(".color");
-
-// changeColorRef.addEventListener('change', onChangeColor)
-
-// function onChangeColor() {
-//   // console.log(changeColorRef.value);
-//   DRAW_COLOR = changeColorRef.value;
-// }
-
-// inputDrawSize.addEventListener('change', onChangeDrawSize)
-
-// function onChangeDrawSize() {
-//   DRAW_PIXEL = inputDrawSize.value
-// }
-
+const createBoxes = () => {
+  const inputValue = ref.input.value;
+  let boxCreated = [];
+  let firstBox = 30;
+  for (let i = 1; i <= inputValue; i += 1) {
+    if (inputValue > 100) {
+      alert('Maximum input value is 100')
+      break;
+    }
+    else{const createCustomBox = document.createElement('div');
+  createCustomBox.classList.add('item');
+  createCustomBox.style.width = firstBox + 'px';
+  createCustomBox.style.height = firstBox + 'px';
+  createCustomBox.style.backgroundColor = getRandomHexColor();
+    firstBox += 10;
+      boxCreated.push(createCustomBox);
+    }
+   }
+  ref.boxesIsCreate.append(...boxCreated);
+  console.log(boxCreated);
   
-// ourBody.style.height = "100vh";
-// ourBody.addEventListener('mousedown', onClickDraw)  //1 
-// ourBody.addEventListener('mouseup', onCancelDraw) //4
+}
 
-// function onClickDraw() {
-//   ourBody.addEventListener('mousemove', drawSquare) // 2
-// }
+const destroyBoxes = () => {
 
-// function onCancelDraw() {
-//   ourBody.removeEventListener('mousemove', drawSquare) //5
-// }
+  ref.boxesIsCreate.innerHTML = ('');
 
-// function drawSquare(event) { // 3 
-//   // console.log(event, event.pageX, event.pageY);
+}
 
-//   const box = document.createElement('div');
-//   box.style.position = 'absolute';
-//   box.style.left = event.pageX + 'px';
-//   box.style.top = event.pageY + 'px';
-//   box.style.width = DRAW_PIXEL + 'px';
-//   box.style.height = DRAW_PIXEL + 'px';
-//   box.style.backgroundColor = DRAW_COLOR;
+ref.createBox.addEventListener('click', createBoxes)
+ref.destroyBox.addEventListener('click', destroyBoxes)
 
 
-//   ourBody.append(box);
-// }
